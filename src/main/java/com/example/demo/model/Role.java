@@ -1,8 +1,5 @@
 package com.example.demo.model;
 
-/**
- * Created by Edi on 06-Apr-17.
- */
 
 import org.springframework.security.core.GrantedAuthority;
 
