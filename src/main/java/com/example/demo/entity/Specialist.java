@@ -1,9 +1,6 @@
-package com.example.demo.model;
+package com.example.demo.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
@@ -27,6 +24,10 @@ public class Specialist implements Serializable {
 
     @OneToMany(mappedBy = "specialist")
     List<AppointmentSlot> appointmentSlot;
+
+    @OneToOne(optional = false)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 
     @OneToOne
     Address address;

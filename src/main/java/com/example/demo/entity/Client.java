@@ -1,14 +1,14 @@
-package com.example.demo.model;
+package com.example.demo.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
 
 import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "clients")
-public class Client implements Serializable {
+public class Client  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

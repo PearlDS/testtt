@@ -1,10 +1,11 @@
-package com.example.demo.model;
+package com.example.demo.entity;
 
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
 
 @Entity
+@Table(name = "appointment")
 public class AppointmentSlot {
     @Id
     @GeneratedValue

@@ -1,18 +1,23 @@
-package com.example.demo.model;
+package com.example.demo.entity;
 
 
+
+
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 
 import java.io.Serializable;
+
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
+@Table(name = "users", uniqueConstraints={@UniqueConstraint(columnNames ={"username","email"})})
 
-@Table(name = "users")
 public class User implements UserDetails, Serializable {
-	@Id
+		@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
@@ -22,6 +27,8 @@ public class User implements UserDetails, Serializable {
 
 	private String password;
 
+	private boolean active;
+
 	private boolean isAccountNonExpired;
 
 	private boolean isAccountNonLocked;
@@ -30,14 +37,65 @@ public class User implements UserDetails, Serializable {
 
 	private boolean isEnabled;
 
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "users_roles",
-			joinColumns = @JoinColumn(name = "user_id"),
-			inverseJoinColumns = @JoinColumn(name = "role_id"))
+	@ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+	@CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+
 	private Set<Role> authorities;
 
 	public User() {
 		this.setAuthorities(new HashSet<>());
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public void setAccountNonExpired(boolean accountNonExpired) {
+		isAccountNonExpired = accountNonExpired;
+	}
+
+	public void setAccountNonLocked(boolean accountNonLocked) {
+		isAccountNonLocked = accountNonLocked;
+	}
+
+	public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+		isCredentialsNonExpired = credentialsNonExpired;
+	}
+
+	public void setEnabled(boolean enabled) {
+		isEnabled = enabled;
+	}
+
+	public void setAuthorities(Set<Role> authorities) {
+		this.authorities = authorities;
 	}
 
 	@Override
@@ -73,50 +131,6 @@ public class User implements UserDetails, Serializable {
 	@Override
 	public boolean isEnabled() {
 		return isEnabled;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public void setAccountNonExpired(boolean accountNonExpired) {
-		isAccountNonExpired = accountNonExpired;
-	}
-
-	public void setAccountNonLocked(boolean accountNonLocked) {
-		isAccountNonLocked = accountNonLocked;
-	}
-
-	public void setCredentialsNonExpired(boolean credentialsNonExpired) {
-		isCredentialsNonExpired = credentialsNonExpired;
-	}
-
-	public void setEnabled(boolean enabled) {
-		isEnabled = enabled;
-	}
-
-	public void setAuthorities(Set<Role> authorities) {
-		this.authorities = authorities;
 	}
 
 	public void addRole(Role role) {

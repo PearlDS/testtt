@@ -1,9 +1,10 @@
-package com.example.demo.model;
+package com.example.demo.entity;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "treatmentType")
 public class TreatmentType {  //(hier manicure
     @Id
     @GeneratedValue

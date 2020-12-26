@@ -1,23 +1,26 @@
-package com.example.demo.model;
+package com.example.demo.entity;
 
 import javax.persistence.*;
 
 @Entity
+@Table(name = "address")
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String street;
     private String city;
+    private String postcode;
     private int houseNumb;
     private int appNumb;
 
 
-    @ManyToOne
-    @JoinColumn(name="postcode_Id", insertable=false, updatable=false)
-    private Postcode postcode;
 
     public Address() { }
+
+    public void setPostcode(String postcode) {
+        this.postcode = postcode;
+    }
 
     public Integer getId() {
         return id;
@@ -59,13 +62,6 @@ public class Address {
         this.appNumb = appNumb;
     }
 
-    public Postcode getPostcode() {
-        return postcode;
-    }
-
-    public void setPostcode(Postcode postcode) {
-        this.postcode = postcode;
-    }
 
     @Override
     public String toString() {

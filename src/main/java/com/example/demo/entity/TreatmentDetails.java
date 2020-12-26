@@ -1,10 +1,11 @@
-package com.example.demo.model;
+package com.example.demo.entity;
 
 import javax.persistence.*;
 import java.sql.Time;
 import java.util.Set;
 
 @Entity
+@Table(name = "treatmentDetails")
 public class TreatmentDetails { //hier french manicure
     @Id
     @GeneratedValue
@@ -15,6 +16,7 @@ public class TreatmentDetails { //hier french manicure
     String description;
     @ManyToOne
     TreatmentType treatmentType;
+
 
     @ManyToMany
     @JoinTable(name = "specialistCanDoTreatment", joinColumns = {@JoinColumn(name = "specialist_id")},
