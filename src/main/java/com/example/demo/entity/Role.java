@@ -4,10 +4,11 @@ import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.Embeddable;
 
-@Embeddable
+@Entity
 public class  Role implements GrantedAuthority {
     private Integer id;
     private String authority;
+
 
     @Override
     public String getAuthority() {

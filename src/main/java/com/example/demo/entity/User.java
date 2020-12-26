@@ -37,10 +37,10 @@ public class User implements UserDetails, Serializable {
 
 	private boolean isEnabled;
 
-	@ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-	@CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
-
-	private Set<Role> authorities;
+//	@ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+//	@CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+@Manytoone
+	private Role authorities;
 
 	public User() {
 		this.setAuthorities(new HashSet<>());
