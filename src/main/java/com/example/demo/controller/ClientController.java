@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.repo.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+
 
 //@Controller
 //@RequestMapping(path="/demo")

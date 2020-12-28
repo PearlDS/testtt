@@ -63,13 +63,13 @@ public class TreatmentDetails { //hier french manicure
         this.description = description;
     }
 
-    public TreatmentType getTreatmentType() {
-        return treatmentType;
-    }
-
-    public void setTreatmentType(TreatmentType treatmentType) {
-        this.treatmentType = treatmentType;
-    }
+//    public TreatmentType getTreatmentType() {
+//        return treatmentType;
+//    }
+//
+//    public void setTreatmentType(TreatmentType treatmentType) {
+//        this.treatmentType = treatmentType;
+//    }
 
     public Set<Specialist> getSpecialists() {
         return specialists;
@@ -79,16 +79,5 @@ public class TreatmentDetails { //hier french manicure
         this.specialists = specialists;
     }
 
-    @Override
-    public String toString() {
-        return "TreatmentDetails{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", approxTime=" + approxTime +
-                ", approxPrice='" + approxPrice + '\'' +
-                ", description='" + description + '\'' +
-                ", treatmentType=" + treatmentType +
-                ", specialists=" + specialists +
-                '}';
-    }
+
 }

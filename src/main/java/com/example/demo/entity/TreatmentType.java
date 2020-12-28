@@ -5,15 +5,16 @@ import java.util.List;
 
 @Entity
 @Table(name = "treatmentType")
-public class TreatmentType {  //(hier manicure
+public class TreatmentType {  //(hier manicure,pedicure
     @Id
     @GeneratedValue
     Integer Id;
     String treatmentType;
-    @OneToMany(mappedBy = "treatmentType")
+    @OneToMany(mappedBy = "treatmentType",cascade = CascadeType.ALL)
     List<TreatmentDetails> treatmentDetails;  //hier french manicure
 
     @ManyToOne
+    @JoinColumn(name = "treatment_id")
     Treatment treatment;
 
     public Integer getId() {
@@ -32,13 +33,13 @@ public class TreatmentType {  //(hier manicure
         this.treatmentType = treatmentType;
     }
 
-    public List<TreatmentDetails> getTreatmentDetails() {
-        return treatmentDetails;
-    }
-
-    public void setTreatmentDetails(List<TreatmentDetails> treatmentDetails) {
-        this.treatmentDetails = treatmentDetails;
-    }
+//    public List<TreatmentDetails> getTreatmentDetails() {
+//        return treatmentDetails;
+//    }
+//
+//    public void setTreatmentDetails(List<TreatmentDetails> treatmentDetails) {
+//        this.treatmentDetails = treatmentDetails;
+//    }
 
     public Treatment getTreatment() {
         return treatment;
@@ -48,13 +49,5 @@ public class TreatmentType {  //(hier manicure
         this.treatment = treatment;
     }
 
-    @Override
-    public String toString() {
-        return "TreatmentType{" +
-                "Id=" + Id +
-                ", treatmentType='" + treatmentType + '\'' +
-                ", treatmentDetails=" + treatmentDetails +
-                ", treatment=" + treatment +
-                '}';
-    }
+
 }

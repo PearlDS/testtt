@@ -2,8 +2,7 @@ package com.example.demo.entity;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "address")
+
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -13,6 +12,8 @@ public class Address {
     private String postcode;
     private int houseNumb;
     private int appNumb;
+    @OneToOne
+    Specialist specialist;
 
 
 
@@ -63,16 +64,6 @@ public class Address {
     }
 
 
-    @Override
-    public String toString() {
-        return "Address{" +
-                "id=" + id +
-                ", street='" + street + '\'' +
-                ", city='" + city + '\'' +
-                ", houseNumb=" + houseNumb +
-                ", appNumb=" + appNumb +
-                ", postcode=" + postcode +
-                '}';
-    }
+
 }
 

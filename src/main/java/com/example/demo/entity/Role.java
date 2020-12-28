@@ -1,21 +1,23 @@
 package com.example.demo.entity;
 
-import org.springframework.security.core.GrantedAuthority;
 
-import javax.persistence.Embeddable;
 
-@Entity
-public class  Role implements GrantedAuthority {
+import javax.persistence.*;
+import java.util.List;
+
+//@Entity
+//@Table(name="roles")
+public class  Role  {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    private String authority;
+    private String role;
+    @OneToMany(mappedBy = "role",cascade = CascadeType.ALL)
+    private List<User> users;
 
 
-    @Override
-    public String getAuthority() {
-        return null;
-    }
-    public void setAuthority(String authority) {
-        this.authority = authority;
-    }
+
+
+
 }
 

@@ -20,11 +20,83 @@ public class Client  {
 
     private String telephoneNumber;
 
-    @OneToOne(optional = false)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+
+   @OneToOne(optional = false)
+   @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
     @OneToMany(mappedBy = "client")
     private List<AppointmentSlot> appointment;
 
+    public Client(Integer id, String firstName, String lastName, String telephoneNumber, User user, List<AppointmentSlot> appointment) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.telephoneNumber = telephoneNumber;
+        this.user = user;
+        this.appointment = appointment;
+    }
+
+    public Client() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getTelephoneNumber() {
+        return telephoneNumber;
+    }
+
+    public void setTelephoneNumber(String telephoneNumber) {
+        this.telephoneNumber = telephoneNumber;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<AppointmentSlot> getAppointment() {
+        return appointment;
+    }
+
+    public void setAppointment(List<AppointmentSlot> appointment) {
+        this.appointment = appointment;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", telephoneNumber='" + telephoneNumber + '\'' +
+                ", user=" + user +
+                ", appointment=" + appointment +
+                '}';
+    }
 }
