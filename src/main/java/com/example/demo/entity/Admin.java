@@ -15,8 +15,7 @@ public class Admin {
 
 	private String lastName;
 
-	@OneToOne(optional = false)
-	@JoinColumn(name = "user_id", referencedColumnName = "id")
+	@OneToOne(optional = false,cascade = CascadeType.PERSIST)
 	private User user;
 
 	public Admin() {

@@ -29,18 +29,21 @@ public class Specialist implements Serializable {
 
     private int appNumb;
 
-    @ManyToMany(mappedBy = "specialists")
+
+
+
+    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
+    @JoinTable(name = "specialistCanDoTreatment", joinColumns = {@JoinColumn(name = "treatmentDetails_id")},
+            inverseJoinColumns = {@JoinColumn(name = "specialist_id")})
     Set<TreatmentDetails> treatmentDetails;
 
-    @OneToMany(mappedBy = "specialist")
+    @OneToMany(mappedBy = "specialist",cascade = CascadeType.PERSIST)
     List<AppointmentSlot> appointmentSlot;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
-//    @OneToOne @JoinColumn(name = "address_id", referencedColumnName = "id")
-//    Address address;
 
 
     public Specialist() {
@@ -56,7 +59,7 @@ public class Specialist implements Serializable {
         this.postcode = postcode;
         this.houseNumb = houseNumb;
         this.appNumb = appNumb;
-        this.treatmentDetails = treatmentDetails;
+       // this.treatmentDetails = treatmentDetails;
         this.appointmentSlot = appointmentSlot;
         this.user = user;
     }
@@ -155,5 +158,23 @@ public class Specialist implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Specialist{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", telephoneNumber='" + telephoneNumber + '\'' +
+                ", street='" + street + '\'' +
+                ", city='" + city + '\'' +
+                ", postcode='" + postcode + '\'' +
+                ", houseNumb=" + houseNumb +
+                ", appNumb=" + appNumb +
+               ", treatmentDetails=" + treatmentDetails +
+                ", appointmentSlot=" + appointmentSlot +
+                ", user=" + user +
+                '}';
     }
 }

@@ -21,11 +21,19 @@ public class AppointmentSlot {
     @JoinColumn(name = "client_id")
     private Client client;
 
-   @ManyToOne
+   @ManyToOne(cascade = CascadeType.PERSIST)
    @JoinColumn(name = "treatmentDetails_id")
-   private TreatmentType treatmentType;
+   private TreatmentDetails treatmentDetails;
 
     public AppointmentSlot() {}
+
+    public Client getClient() {
+        return client;
+    }///???????????
+
+    public void setClient(Client client) {
+        this.client = client;
+    }////?????
 
     public Integer getId() {
         return id;
@@ -61,19 +69,19 @@ public class AppointmentSlot {
 
     public Specialist getSpecialist() {
         return specialist;
-    }
+    }///??????????
 
     public void setSpecialist(Specialist specialist) {
         this.specialist = specialist;
+    }///??????
+
+
+    public TreatmentDetails getTreatmentDetails() {
+        return treatmentDetails;
     }
 
-
-    public TreatmentType getTreatmentType() {
-        return treatmentType;
-    }
-
-    public void setTreatmentType(TreatmentType treatmentType) {
-        this.treatmentType = treatmentType;
+    public void setTreatmentDetails(TreatmentDetails treatmentDetails) {
+        this.treatmentDetails = treatmentDetails;
     }
 
     @Override
@@ -85,7 +93,7 @@ public class AppointmentSlot {
                 ", date=" + date +
                 ", specialist=" + specialist +
                 ", client=" + client +
-                ", treatmentType=" + treatmentType +
+                ", treatmentType=" + treatmentDetails +
                 '}';
     }
 }

@@ -10,10 +10,10 @@ public class TreatmentType {  //(hier manicure,pedicure
     @GeneratedValue
     Integer Id;
     String treatmentType;
-    @OneToMany(mappedBy = "treatmentType",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "treatmentType",cascade = CascadeType.PERSIST)
     List<TreatmentDetails> treatmentDetails;  //hier french manicure
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "treatment_id")
     Treatment treatment;
 

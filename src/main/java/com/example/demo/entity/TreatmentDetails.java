@@ -14,14 +14,28 @@ public class TreatmentDetails { //hier french manicure
     Time approxTime;
     String approxPrice;
     String description;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     TreatmentType treatmentType;
 
 
-    @ManyToMany
-    @JoinTable(name = "specialistCanDoTreatment", joinColumns = {@JoinColumn(name = "specialist_id")},
-            inverseJoinColumns = {@JoinColumn(name = "treatmentDetails_id")})
-    Set<Specialist> specialists;
+
+
+//    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.PERSIST)
+//    @JoinTable(name = "specialistCanDoTreatment", joinColumns = {@JoinColumn(name = "specialist_id")},
+//            inverseJoinColumns = {@JoinColumn(name = "treatmentDetails_id")})
+   // Set<Specialist> specialists;
+
+    public TreatmentDetails(String name, Time approxTime, String approxPrice, String description) {
+        this.name = name;
+        this.approxTime = approxTime;
+        this.approxPrice = approxPrice;
+        this.description = description;
+
+    }
+
+    public TreatmentDetails() {
+
+    }
 
     public Integer getId() {
         return id;
@@ -63,21 +77,32 @@ public class TreatmentDetails { //hier french manicure
         this.description = description;
     }
 
-//    public TreatmentType getTreatmentType() {
-//        return treatmentType;
+    public TreatmentType getTreatmentType() {
+        return treatmentType;
+    }
+
+    public void setTreatmentType(TreatmentType treatmentType) {
+        this.treatmentType = treatmentType;
+    }
+
+//    public Set<Specialist> getSpecialists() {
+//        return specialists;
 //    }
 //
-//    public void setTreatmentType(TreatmentType treatmentType) {
-//        this.treatmentType = treatmentType;
+//    public void setSpecialists(Set<Specialist> specialists) {
+//        this.specialists = specialists;
 //    }
 
-    public Set<Specialist> getSpecialists() {
-        return specialists;
+    @Override
+    public String toString() {
+        return "TreatmentDetails{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", approxTime=" + approxTime +
+                ", approxPrice='" + approxPrice + '\'' +
+                ", description='" + description + '\'' +
+                ", treatmentType=" + treatmentType +
+             //   ", specialists=" + specialists +
+                '}';
     }
-
-    public void setSpecialists(Set<Specialist> specialists) {
-        this.specialists = specialists;
-    }
-
-
 }

@@ -1,9 +1,7 @@
 package com.example.demo.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 
-import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -20,9 +18,11 @@ public class Client  {
 
     private String telephoneNumber;
 
+    private String email;
 
-   @OneToOne(optional = false)
-   @JoinColumn(name = "user_id", referencedColumnName = "id")
+
+
+   @OneToOne(optional = false,cascade = CascadeType.PERSIST)
     private User user;
 
     @OneToMany(mappedBy = "client")
@@ -38,6 +38,14 @@ public class Client  {
     }
 
     public Client() {
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Integer getId() {

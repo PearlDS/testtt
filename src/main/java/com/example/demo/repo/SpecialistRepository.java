@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository("specialistRepository")
 public interface SpecialistRepository extends JpaRepository<Specialist, Integer> {
+
 }

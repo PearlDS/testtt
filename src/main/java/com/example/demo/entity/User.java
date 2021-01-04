@@ -29,14 +29,14 @@ public class User  {
 	private String password;
 
 	private boolean active;
-	//@ManyToOne(optional = false)
-	//@JoinColumn(name = "role_Id")
 
 	private String role;
 
-//	@OneToOne
-//	private Admin admin;
 
+
+
+	public User() {
+	}
 
 	public User(String username, String email, String password, boolean active, String role) {
 		this.username = username;

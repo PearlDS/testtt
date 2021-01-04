@@ -11,7 +11,7 @@
 <main>
     <div class="container">
         <h1 class="h1">Login </h1>
-        <div style="color: red" th:if="${error} != null" th:text="${error}"></div>
+<!--        <div style="color: red" th:if="${error} != null" th:text="${error}"></div>-->
         <form method="post">
             <div class="form-group">
                 <label class="form-control-label" for="inputUsername">Username</label>
@@ -29,7 +29,7 @@
 <!--            </div>-->
             <input type="submit" class="btn btn-secondary float-right clickable" value="Log In"/>
             <span class="pl-1">New to our system?</span>
-            <a href="/register-client">Register here</a>
+            <a href="client/register">Register here</a>
         </form>
     </div>
 </main>

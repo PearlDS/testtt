@@ -12,8 +12,16 @@ public class Treatment {
     String name;
 
     @OneToMany
-    (mappedBy ="treatment",cascade = CascadeType.ALL)
+    (mappedBy ="treatment",cascade = CascadeType.PERSIST)
     List<TreatmentType> treatmentTypes;
+
+    public Treatment(String name, List<TreatmentType> treatmentTypes) {
+        this.name = name;
+        this.treatmentTypes = treatmentTypes;
+    }
+
+    public Treatment() {
+    }
 
     public Integer getId() {
         return id;
@@ -39,5 +47,12 @@ public class Treatment {
         this.treatmentTypes = treatmentTypes;
     }
 
-
+    @Override
+    public String toString() {
+        return "Treatment{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", treatmentTypes=" + treatmentTypes +
+                '}';
+    }
 }
